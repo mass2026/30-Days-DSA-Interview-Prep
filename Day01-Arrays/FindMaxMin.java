@@ -1,58 +1,66 @@
+import java.util.Arrays;
+
 public class FindMaxMin{
      
-    // public int findMax(int arr[]){
-       
-    //     int max = arr[0];
-       
-    //     for(int i=1;i<arr.length;i++){
-            
-    //         if(max < arr[i]){
-    //             max =arr[i];
-    //         }
-    //     }
-    //     return max;
-    // }
-
-    // public int findMin(int arr[]){
-       
-    //     int min = arr[0];
     
-    //     for(int i=1;i<arr.length;i++){
-            
-    //         if(min > arr[i]){
-    //             min =arr[i];
-    //         }
-    //     }
-    //  return min;
-       
-    // }
+  public int findMax(int arr[]){
+    
+    int max =arr[0]; 
 
-    public int[] findMinAndMax(int arr[]){
-     
-        int max=arr[0];
-        int min=arr[0];
-
-        for(int i=1;i<arr.length;i++){
-          
-            if(max <arr[i]){
-                max = arr[i];
-            }
-            if (min > arr[i]) {
-                min = arr[i];
-            }
-        }
-        return new int[] {min ,max};
+    for(int i=1; i<arr.length; i++){
+         if(arr[i]> max){
+            max = arr[i];
+       }
     }
+    return max;
+  }
+
+  public int findMin(int arr[]){
+    
+    int min =arr[0];
+    
+    for(int i=1; i<arr.length; i++){
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+
+    return min;
+  }
+
+  public int[] finMinAndMax(int arr[]){
+    
+     int min = arr[0];
+     int max =arr[0];
+
+    for(int i=1; i<arr.length; i++){
+      
+        if (arr[i]> max) {
+            max = arr[i];
+        }
+        if(arr[i]<min){
+            min = arr[i];
+        }
+    }
+      int minAndMax[]={min,max};
+    return minAndMax ;
+  }
 
     public static void main(String args[]){
          
-        int[] arr = {10, 25, 7, 40, 18};
-        FindMaxMin x = new FindMaxMin();
-        // int result =x.findMax(arr);
-        // int minResult =x.findMin(arr);
-         int[] result = x.findMinAndMax(arr);
-         System.out.println("Maximum = "+result[1]);
-          System.out.println("Minimum = "+result[0]);
-        // System.out.println("Maximum = " +result +"minimum is ="+minResult);
+        // FindMaxMin maxEl = new FindMaxMin();
+        // int maxNum = maxEl.findMax(new int[] {-7, -2, -9, -4, -1, -6});
+        // System.out.println("Max Element from given array is :" +maxNum );
+
+        // FindMaxMin minEl = new FindMaxMin();
+        // int minNum = minEl.findMin(new int[] {-7, -2, -9, -4, -1, -6});
+        // System.out.println("Min Element from given array is :" +minNum);
+
+        int min ;
+        int mx;
+        FindMaxMin minAndMaxEl = new FindMaxMin();
+        int minMaxEl[] = minAndMaxEl.finMinAndMax(new int[] {-7, -2, -9, -4, -1, 6});
+        System.out.println("Min Element from given array is :"  + Arrays.toString(minMaxEl));
+    
     }
 }            

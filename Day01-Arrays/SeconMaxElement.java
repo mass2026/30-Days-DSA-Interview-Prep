@@ -1,28 +1,34 @@
 public class SeconMaxElement {
-    
-    public int findSecondMax(int arr[]){
-          
-       
-     int max = Integer.MIN_VALUE;
-     int secondMax = Integer.MIN_VALUE;
 
-        
-       for(int i=0; i<arr.length; i++){
-           
-         if(max <arr[i]){
-             secondMax = max;
-             max = arr[i];
-         }else if(secondMax <arr[i] && arr[i]!=max){
-             secondMax = arr[i];
-         }
-       }
-        return secondMax;
+    public int findSecondLargest(int arr[]) {
+
+        int largest = arr[0];
+        int secondLargest = -1;
+        boolean foundSecondLargest = false;
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr == null || arr.length < 2) {
+                return -1;
+            }
+            if (arr[i] > largest) {
+                secondLargest = largest;
+                largest = arr[i];
+                foundSecondLargest = true;
+            } else if (arr[i] < largest &&
+                    (!foundSecondLargest || arr[i] > secondLargest)) {
+                secondLargest = arr[i];
+                foundSecondLargest = true;
+            }
+        }
+
+        return foundSecondLargest ? secondLargest : -1;
     }
 
-    public static void main(String args[]){
-        int arr[] = { 40, 40, 25, 10};
-      SeconMaxElement x = new SeconMaxElement();
-      int result = x.findSecondMax(arr);
-      System.out.println("SecondMax Element is = "+result);
+    public static void main(String args[]) {
+
+        SeconMaxElement l1 = new SeconMaxElement();
+        int secondLarge = l1.findSecondLargest(new int[] { 12, 35, 1, 10, 34});
+        System.out.println("Second Largest Element from given Array is : " + secondLarge);
+
     }
 }
